@@ -74,4 +74,17 @@ class ProfileController extends Controller
         $user->save();
         return Redirect::route('profile.edit')->with('status', 'email-notification-set');
     }
+
+    /**
+     * Remove the email notification for weather and clothing suggestions.
+     */
+
+    public function deleteEmailNotification(Request $request)
+    {
+        $user = $request->user();
+        $user->city = null;
+        $user->preferred_email_time = null;
+        $user->save();
+        return Redirect::route('profile.edit')->with('status', 'email-notification-removed');
+    }
 }

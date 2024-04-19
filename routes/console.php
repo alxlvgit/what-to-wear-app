@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use Carbon\Carbon;
 
+
+// To run scheduler in local environment run the following command  'php artisan schedule:run'
+// To run scheduler in production environment add the following cron job to the server  '* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1' 
+
+// Schedule the task to send the email to the user at the preferred email time if the current time is the same as the preferred email time
 Schedule::call(function () {
     foreach (User::all() as $user) {
         if (!$user->preferred_email_time  || !$user->city || !$user->timezone) {
+            Log::info('User ' . $user->id . ' does not have all the required fields set');
             continue;
         }
         $preferredEmailTime = Carbon::createFromFormat('H:i', $user->preferred_email_time);
