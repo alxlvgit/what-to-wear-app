@@ -6,7 +6,15 @@
     </x-slot>
 
     <div class="py-12">
+
+
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            @if (session('status'))
+            <div class="bg-green-500 text-white font-semibold p-4 rounded-lg mb-6" role="alert">
+                {{ session('status') }}
+            </div>
+            @endif
+
             @if(auth()->user()->preferred_email_time && auth()->user()->city)
             @include('profile.partials.email-notification-settings')
             @endif

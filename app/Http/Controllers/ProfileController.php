@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
@@ -69,6 +68,9 @@ class ProfileController extends Controller
         $city = $request->input('city');
         $preferred_email_time = $request->input('preferred_email_time');
         $user = $request->user();
+        if (!$city || !$preferred_email_time) {
+            return Redirect::route('profile.edit')->with('status', 'email-notification-failed');
+        }
         $user->city = $city;
         $user->preferred_email_time = $preferred_email_time;
         $user->save();

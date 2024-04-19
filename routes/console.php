@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Schedule;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use App\Mail\WeatherReport;
 use Illuminate\Support\Facades\Mail;
