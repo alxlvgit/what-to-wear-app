@@ -1,5 +1,5 @@
 <div class="px-8">
-    <form wire:submit.prevent="getWeather" class="flex flex-col">
+    <form wire:submit.prevent="getWeatherSuggestions" class="flex flex-col">
         @csrf
         <label for="city" class="dark:text-white mt-2">Enter City Name:</label>
         <input type="text" class="mt-2" wire:model="city" required>

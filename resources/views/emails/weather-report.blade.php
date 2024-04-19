@@ -8,10 +8,11 @@
 </head>
 
 <body>
-    <h1>Weather Report</h1>
-    <h2>Weather in {{ $weatherData['name'] }}</h2>
+    <h2 class="dark:text-white text-base font-semibold text-gray-800 mt-4">Weather in {{ $weatherData['name'] }}</h2>
     <p>Temperature: {{ $weatherData['main']['temp'] }}°C</p>
     <p>Weather: {{ $weatherData['weather'][0]['description'] }}</p>
+    <p class="dark:text-white text-base font-semibold text-gray-800 mt-4">Clothing Suggestions:</p>
+    <p class="dark:text-white text-base font-semibold text-gray-800">{{ $weatherData['suggestions'] }}</p>
 </body>
 
 </html>
